@@ -1,0 +1,82 @@
+npm init --y
+
+npm install @hapi/hapi
+npm install nanoid
+npm install joi
+npm install pg
+npm install dotenv
+npm install node-pg-migrate
+npm install bcrypt
+npm install @hapi/jwt
+
+
+npm install nodemon -D
+npm install eslint -D
+npx eslint --init
+
+
+psql --username postgres
+CREATE USER developer WITH ENCRYPTED PASSWORD 'supersecretpassword';
+CREATE DATABASE openmusic2; #openmusic/notesapp/companydb;
+GRANT ALL PRIVILEGES ON DATABASE openmusic2 TO developer;
+DROP DATABASE IF EXISTS employee_db;
+\q (quit)
+\dt (daftar table)
+\l (daftar database)
+
+.env
+
+psql --username developer --dbname openmusic2
+npm run migrate create "create table albums"
+npm run migrate create "create table songs"
+npm run migrate create "create table authentications"
+npm run migrate create "create table users"
+npm run migrate create "create table playlists"
+npm run migrate create "create playlistssongs table"
+npm run migrate create "create collaborations table"
+npm run migrate create "create table playlist_activities"
+
+CREATE TABLE di Folder Migrate: npm run migrate up
+npm run migrate create "add column owner to table playlists"
+npm run migrate create "add foreign key to owner column"
+
+
+
+
+migrations: masing2 tabel
+exceptions: client,invariant,
+utils: index (insert/update) #skipalbum
+services/postgres:  (insert/update)  #cek
+validator: schema, index  #cek
+api: routes,handler,index #cek
+tokenize: TokenManager.js
+server.js
+
+
+
+// https://github.com/sarifht/open-music-v2.git
+
+node
+require('crypto').randomBytes(64).toString('hex');
+
+Pengujian akan optimal bila Anda menghapus dulu data yang ada pada database lokal. Caranya, masuk ke psql cli dan hapus data dengan perintah:
+truncate notes, users, authentications;
+
+kolomTujuan: {
+      type: 'VARCHAR(50)',
+      notNull: false,
+    },
+pgm.addConstraint('collaborations', 'unique_playlist_id_and_user_id', 'UNIQUE(playlist_id, user_id)');
+pgm.addConstraint('tableTujuan', 'fk_tableTujuan.kolomTujuan_tableAsal.kolomAsal', 'FOREIGN KEY(kolomTujuan) REFERENCES tableAsal(kolomAsal) ON DELETE CASCADE');
+pgm.dropConstraint('tableTujuan', 'fk_tableTujuan.kolomTujuan_tableAsal.kolomAsal');
+
+songs: album_id dari albums.id
+playlists: owner dari users.id
+playlistssongs: playlist_id dari playlists.id & song_id dari songs.id
+playlist_activities: playlist_id dari playlists.id
+collaborations: playlist_id dari playlists.id & owner dari users.id
+
+
+pgm.addConstraint('songs', 'fk_songs.album_id_albums.id', 'FOREIGN KEY(album_id) REFERENCES albums(id) ON DELETE CASCADE');
+
+album, song, user, playlists, playlistssongs, collaborations, playlist_activities
